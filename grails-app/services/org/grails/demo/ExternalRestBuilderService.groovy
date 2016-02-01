@@ -9,18 +9,14 @@ class ExternalRestBuilderService {
 	void invokeRestBuilderPostWithUrl(String url) {
 
 		if (url) {
-			try {
-				def rest = new RestBuilder()
-				RestResponse response = rest.post(url) {
-					header 'Cookie', "TEST=test"
-					header 'X-DEBUG', "true"
-					contentType "application/json"
-				}
-				if (response.statusCode != HttpStatus.OK) {
-					log.error("Error calling post, response code: ${response.statusCode}")
-				}
-			} catch (Exception e) {
-				log.error("Exception", e)
+			def rest = new RestBuilder()
+			RestResponse response = rest.post(url) {
+				header 'Cookie', "TEST=test"
+				header 'X-DEBUG', "true"
+				contentType "application/json"
+			}
+			if (response.statusCode != HttpStatus.OK) {
+				log.error("Error calling post, response code: ${response.statusCode}")
 			}
 		}
 	}
@@ -28,18 +24,14 @@ class ExternalRestBuilderService {
 	void invokeRestBuilderGetWithUrl(String url) {
 
 		if (url) {
-			try {
-				def rest = new RestBuilder()
-				RestResponse response = rest.get(url) {
-					header 'Cookie', "TEST=test2"
-					header 'X-DEBUG', "false"
-					contentType "application/json"
-				}
-				if (response.statusCode != HttpStatus.OK) {
-					log.error("Error calling post, response code: ${response.statusCode}")
-				}
-			} catch (Exception e) {
-				log.error("Exception", e)
+			def rest = new RestBuilder()
+			RestResponse response = rest.get(url) {
+				header 'Cookie', "TEST=test2"
+				header 'X-DEBUG', "false"
+				contentType "application/json"
+			}
+			if (response.statusCode != HttpStatus.OK) {
+				log.error("Error calling post, response code: ${response.statusCode}")
 			}
 		}
 	}
